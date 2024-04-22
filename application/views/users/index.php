@@ -207,9 +207,10 @@
                         <td><?= $user->middleName ?></td>
                         <td><?= $user->lastName ?></td>
                         <td><?= $user->userLevel ?></td>
-                        <td><a href="<?php echo base_url('users/edit' . $user->id) ?>">Edit</a> | <a href="<?php echo base_url('users/delete' . $user->id) ?>">Delete</a></td>
+                        <td><a href="<?php echo base_url('users/edit' . $user->id) ?>">Edit</a> | <a href="<?php echo base_url('users/delete/' . $user->id) ?>">Delete</a></td>
                         <td><button type="button" class="btn btn-danger confirm-delete" value="<?= $user->id; ?>">Confirm
-                                Delete</button></td>
+                                Delete</button>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

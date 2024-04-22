@@ -52,8 +52,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+// USERS ROUTES
 $route['users/edit(:any)'] = 'users/edit/$1';
 $route['users/update(:any)'] = 'users/update/$1';
 $route['users/delete(:any)'] = 'users/delete/$1';
+// STUDENTS ROUTES
+$route['students/delete(:any)'] = 'students/delete/$1';
+$route['students/update(:any)'] = 'students/update/$1';
+$route['students/edit(:any)'] = 'students/edit/$1';
+
+
 
 $route['users/confirmdelete(:any)']['DELETE'] = 'users/delete/$1';

@@ -6,11 +6,20 @@ class Users extends CI_Controller
         parent::__construct();
         $this->load->model("users_model");
     }
+    public function login()
+
+    {
+
+        $this->load->view('users/footer');
+    }
     public function index()
     {
         $data['users'] = $this->users_model->rows();
+        $this->load->view('users/login.index');
+
         $this->load->view('template/footer');
         $this->load->view('users/index', $data);
+        $this->load->view('users/footer');
     }
 
 
@@ -72,7 +81,9 @@ class Users extends CI_Controller
                 'firstName'     => $this->input->post('first_name'),
                 'middleName'    => $this->input->post('middle_name'),
                 'lastName'      => $this->input->post('last_name'),
-                'employee_no'   => $this->input->post('employee_no')
+                'employee_no'   => $this->input->post('employee_no'),
+                'date_updated'  => date('Y-m-d'),
+                'updated'       => 'users   '
             );
 
 
@@ -89,10 +100,11 @@ class Users extends CI_Controller
             $this->edit($id);
         }
     }
-    public function delete($id)
+    public function delete()
     {
-        $this->load->model("users_model");
+        $id = $this->input->post('id');
         $this->users_model->deleteuser($id);
-        redirect(base_url('users'));
+        $this->session->set_flashdata('successDelete', 'User Successfully Deleted');
+        redirect(site_url('users'));
     }
 }

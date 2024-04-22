@@ -34,7 +34,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
+        margin-top: 3.5%;
+        margin-bottom: 2.5%;
+        padding: 10px
     }
 
     .form {
@@ -126,24 +128,19 @@
 
     .error {
         color: red;
-        font-size: .8em;
+        font-size: .7em;
     }
 
     /* End of Forms Design */
 </style>
-
-<!-- warning/ form validation, error checker -->
-
-<!-- Actual Formr -->
-
 <div class="l-form">
-    <form action="<?= site_url('students/add') ?>" class="form" method="post">
+    <form action="<?php echo base_url('students/update' . $students->id) ?>" class="form" method="post">
 
 
         <div class="text-danger">
 
         </div>
-        <h5 class="form__title" style="text-align: center;">Student's Information</h5>
+        <h5 class="form__title" value="<?= $students->education_level ?>" style="text-align: center;">Update Student's Information</h5>
 
         <div class="input-group mb-1">
             <div class="input-group-prepend">
@@ -159,7 +156,7 @@
 
         <!-- Employee Number -->
         <div class="form__div">
-            <input type="text" name="student_no" class="form__input" placeholder=" ">
+            <input type="text" name="student_no" value="<?= $students->student_no ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">Student Number</label>
             <div class="error">
                 <p class="text-danger"> <?php if (validation_errors()) : ?> <?= validation_errors() ?> <?php endif ?>
@@ -170,31 +167,31 @@
         <!-- First Name -->
 
         <div class="form__div">
-            <input type="text" name="first_name" class="form__input" placeholder=" ">
+            <input type="text" name="first_name" value="<?= $students->first_name ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">First Name</label>
         </div>
 
         <!-- Middle Name -->
         <div class="form__div">
-            <input type="text" name="middle_name" class="form__input" placeholder=" ">
+            <input type="text" name="middle_name" value="<?= $students->middle_name ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">Middle Name</label>
         </div>
 
         <!-- Last Name -->
         <div class="form__div">
-            <input type="text" name="last_name" class="form__input" placeholder=" ">
+            <input type="text" name="last_name" value="<?= $students->last_name ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">Last Name</label>
         </div>
         <div class="form__div">
-            <input type="text" name="final_Grade" class="form__input" placeholder=" ">
+            <input type="text" name="final_Grade" value="<?= $students->final_grade ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">Final Grade</label>
         </div>
         <div class="form__div">
-            <input type="text" name="midterm_grade" class="form__input" placeholder=" ">
+            <input type="text" name="midterm_grade" value="<?= $students->midterm_grade ?>" class="form__input" placeholder=" ">
             <label for="" class="form__label">Midterm Grade</label>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Register">
+        <input type="submit" class="btn btn-primary" value="Update">
     </form>
 </div>
 

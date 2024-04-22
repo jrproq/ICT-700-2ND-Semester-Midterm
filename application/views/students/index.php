@@ -1,58 +1,61 @@
 <link rel="stylesheet" href="<?= base_url('application/assets/css/bootstrap.css') ?>">
 
 <style>
-.navbar-brand {
+  .navbar-brand {
     font-family: "poppins";
     font-weight: bold;
-}
+  }
 </style>
-<section id = 'content'>
+<section id='content'>
 
-  <div class= "container-fluid mt-5">
+  <div class="container-fluid mt-5">
     <div class="container shadow-lg p-4">
-        <h3>List of Students</h3>
-        <a class= "btn btn-primary" href="<?= site_url('students/add') ?>">Add New Students</a>
+      <h3>List of Students</h3>
+      <a class="btn btn-primary" href="<?= site_url('students/add') ?>">Add New Students</a>
 
-        <div class= "mt-2">
-          <table class="table">
-            <thead>
+      <div class="mt-2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Student Number</th>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Final Grade</th>
+              <th>Midterm Grade</th>
+
+
+              <th>Education Level</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <?php
+            foreach ($students as $user) :
+
+            ?>
               <tr>
-                    <th>Student Number</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Final Grade</th>
-                    <th>Midterm Grade</th>
+                <td><?= $user->student_no ?></td>
+                <td><?= $user->last_name ?></td>
+                <td><?= $user->first_name ?></td>
+                <td><?= $user->middle_name ?></td>
+                <td><?= $user->final_grade ?></td>
+                <td><?= $user->midterm_grade ?></td>
+                <td><?= $user->education_level ?></td>
 
-
-                    <th>Education Level</th>
+                <td><a href="<?php echo base_url('students/edit' . $user->id) ?>">Edit</a> | <a href="<?php echo base_url('students/delete' . $user->id) ?>">Delete</a></td>
+                <td><button type="button" class="btn btn-danger confirm-delete" value="<?= $user->id; ?>">Confirm
+                    Delete</button>
+                </td>
               </tr>
-            </thead>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
 
-            <tbody>
-                <?php
-                 foreach($students as $user):
-                
-                ?>
-                <tr>
-                    <td><?= $user->student_no ?></td>
-                    <td><?= $user->last_name ?></td>
-                    <td><?= $user->first_name ?></td>
-                    <td><?= $user->middle_name ?></td>
-                    <td><?= $user->final_grade ?></td>
-                    <td><?= $user->midterm_grade ?></td>
-                    <td><?= $user->education_level?></td>
 
-                    <td><a href="#">Edit</a>|<a href="#">Delete</a></td>
-                </tr>
-                 <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
-    
-   
     </div>
-  </div> 
+  </div>
 </section>
 
 
